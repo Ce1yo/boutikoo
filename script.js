@@ -103,6 +103,30 @@ document.addEventListener('DOMContentLoaded', function() {
         statsObserver.observe(statsSection);
     }
 
+    // Gestion du switch des tarifs mensuels/annuels
+    const priceToggleButtons = document.querySelectorAll('.price-toggle .btn');
+    
+    priceToggleButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Retirer la classe active de tous les boutons
+            priceToggleButtons.forEach(btn => btn.classList.remove('active'));
+            // Ajouter la classe active au bouton cliqué
+            button.classList.add('active');
+            
+            const period = button.getAttribute('data-period');
+            const monthlyPrices = document.querySelectorAll('.monthly-price');
+            const annualPrices = document.querySelectorAll('.annual-price');
+            
+            if (period === 'monthly') {
+                monthlyPrices.forEach(price => price.style.display = 'block');
+                annualPrices.forEach(price => price.style.display = 'none');
+            } else {
+                monthlyPrices.forEach(price => price.style.display = 'none');
+                annualPrices.forEach(price => price.style.display = 'block');
+            }
+        });
+    });
+
     // Initialisation du slider de témoignages
     const testimonialsSlider = new Swiper('.testimonials-slider', {
         slidesPerView: 1,
