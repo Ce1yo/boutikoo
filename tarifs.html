@@ -585,6 +585,72 @@
             font-size: 2.2rem;
         }
     }
+    
+    /* Style pour le conteneur de prix */
+    .price-container {
+        text-align: center;
+        margin: 1.5rem 0;
+        position: relative;
+    }
+    
+    .price {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 0.25rem;
+        line-height: 1.2;
+    }
+    
+    .price span {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    
+    .annual-commitment {
+        font-size: 0.85rem;
+        color: #666;
+        opacity: 0.85;
+        letter-spacing: 0.2px;
+        margin-top: 0.25rem;
+    }
+
+    /* Style spécifique pour desktop */
+    @media (min-width: 992px) {
+        .price-container {
+            margin: 2rem 0;
+        }
+
+        .price {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .annual-commitment {
+            position: relative;
+            font-size: 0.8rem;
+            padding: 0.4rem 0;
+        }
+
+        .annual-commitment::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 1px;
+            background: currentColor;
+            opacity: 0.2;
+        }
+    }
+    
+    .pricing-card.featured .price {
+        color: white;
+    }
+    
+    .pricing-card.featured .annual-commitment {
+        color: rgba(255, 255, 255, 0.9);
+    }
     </style>
 </head>
 <body>
@@ -629,8 +695,8 @@
             <!-- Sélecteur de période -->
             <div class="price-toggle mb-4">
                 <div class="btn-group" role="group" aria-label="Sélection de la période">
-                    <button type="button" class="btn" data-period="monthly">Mensuel</button>
                     <button type="button" class="btn active" data-period="annual">Annuel</button>
+                    <button type="button" class="btn" data-period="monthly">Mensuel</button>
                 </div>
             </div>
 
@@ -644,12 +710,11 @@
                                 <h3>Basic</h3>
                                 <div class="price-container">
                                     <div class="monthly-price" style="display: none;">
-                                        <div class="price">59,99€<span>/mois</span></div>
+                                        <div class="price">64,99€<span>/mois</span></div>
                                     </div>
                                     <div class="annual-price">
-                                        <div class="savings-badge">-5%</div>
-                                        <div class="original-price">719,88€/an</div>
-                                        <div class="price discounted-price">679,99€<span>/an</span></div>
+                                        <div class="price discounted-price">54,99€<span>/mois</span></div>
+                                        <div class="annual-commitment">Engagement 12 mois • 659,88€/an</div>
                                     </div>
                                 </div>
                                 <a href="contact.html" class="btn btn-outline-primary">Nous contacter</a>
@@ -658,12 +723,11 @@
                                 <h3>Plus</h3>
                                 <div class="price-container">
                                     <div class="monthly-price" style="display: none;">
-                                        <div class="price">89,99€<span>/mois</span></div>
+                                        <div class="price">94,99€<span>/mois</span></div>
                                     </div>
                                     <div class="annual-price">
-                                        <div class="savings-badge">-5%</div>
-                                        <div class="original-price">1079,88€/an</div>
-                                        <div class="price discounted-price">1019,99€<span>/an</span></div>
+                                        <div class="price discounted-price">84,99€<span>/mois</span></div>
+                                        <div class="annual-commitment">Engagement 12 mois • 1019,88€/an</div>
                                     </div>
                                 </div>
                                 <a href="contact.html" class="btn btn-primary">Nous contacter</a>
@@ -672,12 +736,11 @@
                                 <h3>Premium</h3>
                                 <div class="price-container">
                                     <div class="monthly-price" style="display: none;">
-                                        <div class="price">129,99€<span>/mois</span></div>
+                                        <div class="price">134,99€<span>/mois</span></div>
                                     </div>
                                     <div class="annual-price">
-                                        <div class="savings-badge">-5%</div>
-                                        <div class="original-price">1559,88€/an</div>
-                                        <div class="price discounted-price">1479,99€<span>/an</span></div>
+                                        <div class="price discounted-price">124,99€<span>/mois</span></div>
+                                        <div class="annual-commitment">Engagement 12 mois • 1499,88€/an</div>
                                     </div>
                                 </div>
                                 <a href="contact.html" class="btn btn-outline-primary">Nous contacter</a>
@@ -770,12 +833,11 @@
                             <h3>Basic</h3>
                             <div class="price-container">
                                 <div class="monthly-price" style="display: none;">
-                                    <div class="price">59,99€<span>/mois</span></div>
+                                    <div class="price">64,99€<span>/mois</span></div>
                                 </div>
                                 <div class="annual-price">
-                                    <div class="savings-badge">-5%</div>
-                                    <div class="original-price">719,88€/an</div>
-                                    <div class="price discounted-price">679,99€<span>/an</span></div>
+                                    <div class="price discounted-price">54,99€<span>/mois</span></div>
+                                    <div class="annual-commitment">Engagement 12 mois • 659,88€/an</div>
                                 </div>
                             </div>
                             <ul class="features-list">
@@ -797,12 +859,11 @@
                             <h3>Plus</h3>
                             <div class="price-container">
                                 <div class="monthly-price" style="display: none;">
-                                    <div class="price">89,99€<span>/mois</span></div>
+                                    <div class="price">94,99€<span>/mois</span></div>
                                 </div>
                                 <div class="annual-price">
-                                    <div class="savings-badge">-5%</div>
-                                    <div class="original-price">1079,88€/an</div>
-                                    <div class="price discounted-price">1019,99€<span>/an</span></div>
+                                    <div class="price discounted-price">84,99€<span>/mois</span></div>
+                                    <div class="annual-commitment">Engagement 12 mois • 1019,88€/an</div>
                                 </div>
                             </div>
                             <ul class="features-list">
@@ -828,12 +889,11 @@
                             <h3>Premium</h3>
                             <div class="price-container">
                                 <div class="monthly-price" style="display: none;">
-                                    <div class="price">129,99€<span>/mois</span></div>
+                                    <div class="price">134,99€<span>/mois</span></div>
                                 </div>
                                 <div class="annual-price">
-                                    <div class="savings-badge">-5%</div>
-                                    <div class="original-price">1559,88€/an</div>
-                                    <div class="price discounted-price">1479,99€<span>/an</span></div>
+                                    <div class="price discounted-price">124,99€<span>/mois</span></div>
+                                    <div class="annual-commitment">Engagement 12 mois • 1499,88€/an</div>
                                 </div>
                             </div>
                             <ul class="features-list">
