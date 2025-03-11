@@ -102,6 +102,29 @@ document.addEventListener('DOMContentLoaded', function() {
     if (statsSection) {
         statsObserver.observe(statsSection);
     }
+
+    // Initialisation du slider de témoignages
+    const testimonialsSlider = new Swiper('.testimonials-slider', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 2,
+            },
+            992: {
+                slidesPerView: 3,
+            }
+        }
+    });
 });
 
 // Preloader
@@ -129,25 +152,6 @@ window.addEventListener('scroll', () => {
 backToTop?.addEventListener('click', (e) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// Initialisation du slider des témoignages
-const testimonialsSwiper = new Swiper('.testimonials-slider', {
-    slidesPerView: 1,
-    spaceBetween: 30,
-    loop: true,
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    breakpoints: {
-        768: {
-            slidesPerView: 2,
-        },
-        1024: {
-            slidesPerView: 3,
-        },
-    }
 });
 
 // Initialisation du slider des logos clients
