@@ -466,7 +466,35 @@ body {
     margin-top: 80px;
     background: linear-gradient(135deg, var(--background-light) 0%, var(--white) 100%);
     position: relative;
-    overflow: visible;
+    overflow: hidden;
+}
+
+#testimonials {
+    overflow-x: hidden;
+}
+
+.testimonials-slider {
+    width: 100%;
+    overflow: hidden;
+}
+
+.swiper-wrapper {
+    display: flex;
+    align-items: stretch;
+}
+
+.testimonial-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.testimonial-text {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
 }
 
 .testimonials-slider {
@@ -649,7 +677,7 @@ body {
 #about .about-features {
     margin-top: 3rem;
     padding-top: 2rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(0,0,0,0.05);
 }
 
 #about .feature-item {
@@ -771,6 +799,11 @@ body {
 #clients {
     background: #f8fafc;
     overflow: hidden;
+    padding-bottom: 0;  /* Réduire l'espacement en bas */
+}
+
+#clients .container {
+    margin-bottom: 0;
 }
 
 .clients-slider {
@@ -800,6 +833,8 @@ body {
 .footer {
     background-color: #f8f9fa;
     padding: 4rem 0 2rem;
+    margin-top: 0;  /* Supprimer la marge supérieure du footer */
+    padding-top: 3rem;  /* Ajouter un peu d'espace en haut du footer */
 }
 
 .footer h5 {
@@ -1647,11 +1682,14 @@ body {
 .section-title {
     position: relative;
     padding-bottom: 15px;
+    margin-bottom: 2.5rem;  /* Augmentation de la marge en bas */
     opacity: 0;
     animation: fadeIn 1s ease-in forwards;
+    text-align: center;
 }
 
-.section-title::after {
+/* Suppression de la barre bleue */
+/* .section-title::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -1660,7 +1698,7 @@ body {
     width: 50px;
     height: 3px;
     background: var(--primary-color);
-}
+} */
 
 /* Testimonials */
 .testimonial-card {
