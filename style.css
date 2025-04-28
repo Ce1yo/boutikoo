@@ -797,9 +797,22 @@ body {
 
 /* Clients Section */
 #clients {
+    background: transparent;
+    overflow: visible;
+    padding-bottom: 0;
+}
+
+.clients-bg {
     background: #f8fafc;
-    overflow: hidden;
-    padding-bottom: 0;  /* Réduire l'espacement en bas */
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    box-sizing: border-box;
 }
 
 #clients .container {
@@ -831,11 +844,20 @@ body {
 
 /* Footer */
 .footer {
-    background-color: #f8f9fa;
+    background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
     padding: 4rem 0 2rem;
-    margin-top: 0;  /* Supprimer la marge supérieure du footer */
-    padding-top: 3rem;  /* Ajouter un peu d'espace en haut du footer */
+    margin-top: 0;
+    padding-top: 3rem;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    box-sizing: border-box;
 }
+
 
 .footer h5 {
     color: #1a1a1a;
@@ -1092,6 +1114,283 @@ body {
     .testimonial-card {
         padding: 20px;
     }
+}
+
+/* Mockup navigateur pour présentation des sites */
+.mockup-browser {
+  background: #f7f7fa;
+  border-radius: 16px 16px 18px 18px;
+  box-shadow: 0 8px 32px rgba(3,155,229,0.06), 0 1.5px 4px rgba(0,0,0,0.07);
+  border: 1.5px solid #e3e6ea;
+  max-width: 750px;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+.mockup-browser-bar {
+  height: 32px;
+  background: linear-gradient(90deg, #ececec 70%, #f8f9fa 100%);
+  border-radius: 16px 16px 0 0;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 6px;
+}
+.mockup-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+  display: inline-block;
+  background: #e57373; /* fallback, will be overridden */
+}
+.mockup-dot-red {
+  background: #e57373;
+}
+.mockup-dot-yellow {
+  background: #ffd54f;
+}
+.mockup-dot-green {
+  background: #81c784;
+  margin-right: 0;
+}
+.mockup-browser-screen {
+  background: #fff !important;
+  border-radius: 0 0 14px 14px;
+  overflow: hidden;
+  border-top: 1px solid #e3e6ea;
+  border-left: none !important;
+  box-shadow: none !important;
+}
+.mockup-browser {
+  border: none !important;
+  box-shadow: none !important;
+}
+.mockup-browser-screen img {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+.mockup-browser-screen img {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+@media (max-width: 767px) {
+  .mockup-browser {
+    max-width: 100%;
+  }
+  .mockup-browser-screen img {
+    height: auto !important;
+    width: 100%;
+    object-fit: contain;
+    border-radius: 0 0 14px 14px;
+    display: block;
+  }
+}
+@media (max-width: 576px) {
+  .mockup-browser-screen img {
+    height: auto !important;
+    width: 100%;
+    object-fit: contain;
+  }
+}
+@media (max-width: 400px) {
+  .mockup-browser-screen img {
+    height: auto !important;
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+/* Alert info custom tarifs */
+.alert-info-custom {
+  background: #039BE5 !important;
+  color: #fff !important;
+  border-radius: 1.1rem;
+  border: none;
+  box-shadow: 0 2px 20px rgba(3,155,229,0.12);
+  padding: 1.1rem 1.5rem;
+  font-size: 1.08rem;
+}
+.alert-info-custom .fa-info-circle {
+  color: #fff !important;
+  font-size: 1.2em;
+  margin-right: 0.5em;
+}
+@media (max-width: 576px) {
+  .alert-info-custom {
+    font-size: 0.98rem;
+    padding: 0.85rem 0.7rem;
+  }
+}
+
+/* Card d'appel à l'action tarifs */
+.price-highlight-card {
+  background: linear-gradient(120deg, #e3f2fd 0%, #ffffff 100%);
+  border: 3px solid #039BE5;
+  border-radius: 2rem;
+  box-shadow: 0 8px 32px rgba(3,155,229,0.10), 0 1.5px 4px rgba(0,0,0,0.07);
+  padding: 2.5rem 2.2rem 2rem 2.2rem;
+  text-align: center;
+  position: relative;
+  max-width: 420px;
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 2.5rem;
+}
+.price-highlight-card .price-card-icon {
+  width: 68px;
+  height: 68px;
+  background: #039BE5;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  margin-top: -2.5rem;
+  box-shadow: 0 4px 20px rgba(3,155,229,0.15);
+}
+.price-highlight-card .price-card-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #039BE5;
+  margin-bottom: 1rem;
+  margin-top: 0.7rem;
+}
+.price-highlight-card .price-card-text {
+  font-size: 1.18rem;
+  color: #333;
+  margin-bottom: 0;
+  line-height: 1.7;
+}
+.price-highlight-card .badge-price {
+  background: #fff;
+  color: #039BE5;
+  border: 2px solid #039BE5;
+  border-radius: 1.2rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 0.45em 1.3em;
+  box-shadow: 0 2px 12px rgba(3,155,229,0.10);
+  z-index: 2;
+  display: inline-block;
+  letter-spacing: 0.01em;
+}
+.badge-price-center {
+  position: static !important;
+  margin: 0 auto 0.6rem auto;
+  display: inline-block;
+  left: 0;
+  right: 0;
+  top: 0;
+  transform: none;
+}
+@media (max-width: 576px) {
+  .price-highlight-card .badge-price {
+    font-size: 1.01rem;
+    padding: 0.28em 1em;
+  }
+  .badge-price-center {
+    margin-bottom: 0.5rem;
+  }
+}
+@media (max-width: 576px) {
+  .price-highlight-card {
+    padding: 1.4rem 0.8rem 1.2rem 0.8rem;
+    border-radius: 1.1rem;
+    margin-top: 1.2rem;
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+  }
+  .price-highlight-card .price-card-title {
+    font-size: 1.3rem;
+  }
+  .price-highlight-card .price-card-text {
+    font-size: 1rem;
+  }
+  .price-highlight-card .price-card-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    margin-top: -1.3rem;
+  }
+  .price-highlight-card .badge-price {
+    font-size: 0.92rem;
+    padding: 0.25em 0.8em;
+    right: 0.7rem;
+    top: 0.6rem;
+  }
+}
+
+/* Style pour la carte projet sur la page créations */
+.project-card {
+  border: 1.5px solid #e3e6ea;
+  border-radius: 18px;
+  transition: box-shadow 0.3s, transform 0.3s;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(3,155,229,0.06), 0 1.5px 4px rgba(0,0,0,0.07);
+  padding: 0;
+  margin-top: 0;
+}
+.project-card:hover {
+  box-shadow: 0 12px 36px rgba(3,155,229,0.16), 0 2px 8px rgba(0,0,0,0.11);
+  transform: translateY(-8px) scale(1.035);
+}
+.project-card .mockup-browser {
+  border-radius: 18px 18px 0 0;
+  border-bottom: none;
+  box-shadow: none;
+  margin-bottom: 0;
+  background: #fff;
+  max-width: 100%;
+}
+.project-card .mockup-browser-bar {
+  border-radius: 18px 18px 0 0;
+}
+.project-card .mockup-browser-screen {
+  border-radius: 0 0 0 0;
+}
+.project-card .card-body {
+  border-radius: 0 0 18px 18px;
+  background: #fff;
+  margin-top: 0;
+}
+@media (max-width: 767px) {
+  .project-card .mockup-browser {
+    border-radius: 14px 14px 0 0;
+  }
+  .project-card .card-body {
+    border-radius: 0 0 14px 14px;
+  }
+}
+
+.project-card .card-img-top {
+  transition: transform 0.4s;
+}
+.project-card:hover .card-img-top {
+  transform: scale(1.08);
+}
+@media (max-width: 991px) {
+  .project-card .card-img-top {
+    height: 160px !important;
+  }
+}
+@media (max-width: 767px) {
+  .project-card .card-img-top {
+    height: 120px !important;
+  }
 }
 
 /* Styles pour les pages légales */
@@ -1666,10 +1965,27 @@ body {
 }
 
 /* Buttons */
-.btn-primary {
-    background: var(--primary-color);
+.btn-primary, .calendar-btn {
+    background: var(--primary-color) !important;
     border-color: var(--primary-color);
-    transition: all 0.3s ease;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(3,155,229,0.2);
+}
+
+@media (max-width: 576px) {
+    .btn-primary.btn-lg {
+        width: 100%;
+        display: block;
+        font-size: 1.15rem;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .text-center.my-5 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 }
 
 .btn-primary:hover {
