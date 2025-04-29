@@ -245,6 +245,59 @@
         }
     }
 
+    /* Style des cartes de contact */
+    .price-highlight-card {
+        background: linear-gradient(120deg, #e3f2fd 0%, #ffffff 100%);
+        border: 3px solid #039BE5;
+        border-radius: 2rem;
+        padding: 2rem;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 8px 32px rgba(3,155,229,0.10), 0 1.5px 4px rgba(0,0,0,0.07);
+        transition: all 0.3s ease;
+        color: #333;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .price-highlight-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 48px rgba(3,155,229,0.15), 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .badge-price {
+        background: #039BE5;
+        color: white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.2rem;
+        display: inline-block;
+        margin-bottom: 1rem;
+    }
+
+    .badge-price-center {
+        position: relative;
+        top: 0;
+        transform: translateY(0);
+    }
+
+    .price-card-title {
+        color: #333;
+        font-size: 1.6rem;
+        margin-bottom: 0.8rem;
+        font-weight: 600;
+    }
+
+    .price-card-text {
+        color: #666;
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+    }
+
     /* Style commun pour tous les boutons */
     .btn {
         padding: 0.8rem 1.8rem;
@@ -376,40 +429,35 @@
     </section>
 
     <!-- Section de contact avec décalage négatif -->
-    <section class="contact-section py-5" style="margin-top: -50px;">
+    <section class="contact-section py-5">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="row g-4">
+            <div class="row justify-content-center g-4">
+                <div class="col-12 col-xl-10">
+                    <div class="row justify-content-center g-4">
                         <!-- Carte pour le rendez-vous -->
-                        <div class="col-md-6">
-                            <div class="card h-100 shadow-sm hover-card">
-                                <div class="card-body text-center p-5">
-                                    <div class="mb-4">
-                                        <i class="fas fa-calendar-alt fa-3x text-primary"></i>
-                                    </div>
-                                    <h4 class="card-title mb-4">Prendre un rendez-vous</h4>
-                                    <p class="card-text mb-4">Planifiez une rencontre avec notre équipe pour discuter de votre projet en détail.</p>
-                                    <a href="https://calendar.app.google/Eg99QdGySmcWk4Jo8" target="_blank" class="calendar-btn btn btn-primary">
-                                        <i class="fas fa-calendar-alt me-2"></i>Réserver un rendez-vous
-                                    </a>
+                        <div class="col-md-6 col-lg-5">
+                            <div class="price-highlight-card h-100">
+                                <div class="text-center mb-3 mt-2">
+                                    <span class="badge-price badge-price-center">Rendez-vous gratuit</span>
                                 </div>
+                                <h3 class="price-card-title">Prendre un rendez-vous</h3>
+                                <p class="price-card-text mb-4">Planifiez une rencontre sur mesure avec notre équipe pour discuter de votre projet en détail.</p>
+                                <a href="https://calendar.app.google/Eg99QdGySmcWk4Jo8" target="_blank" class="calendar-btn btn btn-primary">
+                                    <i class="fas fa-calendar-alt me-2"></i>Réserver un rendez-vous
+                                </a>
                             </div>
                         </div>
-
                         <!-- Carte pour l'email -->
-                        <div class="col-md-6">
-                            <div class="card h-100 shadow-sm hover-card">
-                                <div class="card-body text-center p-5">
-                                    <div class="mb-4">
-                                        <i class="fas fa-envelope fa-3x text-primary"></i>
-                                    </div>
-                                    <h4 class="card-title mb-4">Nous envoyer un email</h4>
-                                    <p class="card-text mb-4">Une question ? N'hésitez pas à nous contacter par email, nous vous répondrons dans les plus brefs délais.</p>
-                                    <a href="mailto:contact@boutikoo.fr" class="calendar-btn btn btn-primary">
-                                        <i class="fas fa-paper-plane me-2"></i>Envoyer un email
-                                    </a>
+                        <div class="col-md-6 col-lg-5">
+                            <div class="price-highlight-card h-100">
+                                <div class="text-center mb-3 mt-2">
+                                    <span class="badge-price badge-price-center">Contact rapide</span>
                                 </div>
+                                <h3 class="price-card-title">Nous envoyer un email</h3>
+                                <p class="price-card-text mb-4">Une question ? N'hésitez pas à nous contacter par email, nous vous répondrons dans les plus brefs délais.</p>
+                                <a href="mailto:contact@boutikoo.fr" class="calendar-btn btn btn-primary">
+                                    <i class="fas fa-envelope me-2"></i>Envoyer un email
+                                </a>
                             </div>
                         </div>
                     </div>
