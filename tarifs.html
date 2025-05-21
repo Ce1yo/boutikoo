@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarifs - Boutikoo</title>
+    <link rel="icon" type="image/jpeg" href="images/4x/Fichier 6@4x-100.jpg">
+    <link rel="apple-touch-icon" href="images/4x/Fichier 6@4x-100.jpg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+    /* Styles de base pour les testimonials */
+    .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+        padding: 1rem;
+        margin: 0 auto;
+        max-width: 1400px;
+        width: 100%;
+    }
+
+    @media (max-width: 480px) {
+        .testimonials-grid {
+            grid-template-columns: 1fr;
+            padding: 0.5rem;
+        }
+    }
+
+    .testimonials-slider {
+        overflow: visible;
+    }
+
+    .testimonial-card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: #fff;
+        border-radius: 15px;
+        transition: all 0.3s ease;
+    }
+
+    @media (min-width: 769px) {
+        .swiper-slide {
+            width: calc(33.333% - 2rem) !important;
+        }
+
+        .testimonial-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonial-content {
+            flex: 1;
+        }
+    }
+
+    /* Styles pour les testimonials sur mobile */
+    @media (max-width: 768px) {
+        #testimonials {
+            padding: 3rem 0;
+        }
+
+        #testimonials .container {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+            max-width: 100%;
+        }
+
+        .testimonials-slider {
+            margin: 0;
+            padding: 0.5rem;
+            width: 100%;
+        }
+
+        #testimonials h2 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-card {
+            margin: 0.5rem auto;
+            padding: 2.5rem 2rem;
+            width: 95%;
+            max-width: 450px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+        }
+
+        .testimonial-content {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-align: center;
+            color: #4a4a4a;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding: 0.5rem;
+        }
+
+        .testimonial-content p {
+            margin-bottom: 0;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-content::before,
+        .testimonial-content::after {
+            content: '\201C';
+            font-size: 4rem;
+            color: #e1e1e1;
+            position: absolute;
+            left: -0.5rem;
+            top: -1rem;
+            z-index: 0;
+            font-family: serif;
+        }
+
+        .testimonial-content::after {
+            content: '\201D';
+            left: auto;
+            right: -0.5rem;
+            top: auto;
+            bottom: -2rem;
+        }
+
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .stars i {
+            font-size: 1.1rem;
+            color: #ffc107;
+        }
+
+        .testimonial-author {
+            flex-direction: column;
+            text-align: center;
+            gap: 0.5rem;
+        }
+
+        .testimonial-author img {
+            margin: 0 auto;
+        }
+
+        .swiper-slide {
+            height: auto !important;
+            width: 100% !important;
+            max-width: 450px;
+            padding: 0.25rem;
+            margin: 0.75rem auto;
+        }
+
+        .swiper-wrapper {
+            padding: 1rem 0;
+            gap: 1.5rem;
+        }
+
+        .swiper-pagination {
+            position: relative;
+            margin-top: 2rem;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            display: none;
+        }
+    }
+
+    /* Style pour la carte principale */
+    .featured-service-card {
+        background: linear-gradient(135deg, #039BE5, #0288d1);
+        color: white;
+        padding: 2.5rem;
+        border-radius: 15px;
+        margin-bottom: 3rem;
+        box-shadow: 0 8px 25px rgba(3,155,229,0.25);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .featured-service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 150px;
+        height: 150px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 50%;
+        transform: translate(50%, -50%);
+    }
+
+    .featured-service-card h2 {
+        color: white;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .featured-service-card .features {
+        margin: 2rem 0;
+    }
+
+    .featured-service-card .features li {
+        color: rgba(255,255,255,0.9);
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .featured-service-card .features li i {
+        color: #E1F5FE;
+        margin-right: 0.5rem;
+    }
+
+    .featured-service-card .btn-white {
+        background: white;
+        color: #039BE5;
+        font-weight: 600;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+    }
+
+    .featured-service-card .btn-white:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 768px) {
+        .featured-service-card .row {
+            margin: 0 -0.5rem;
+        }
+        
+        .featured-service-card .col-md-4 {
+            padding: 0 0.5rem;
+        }
+
+        .featured-service-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .featured-service-card .lead {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .featured-service-card .icon {
+            margin-bottom: 1rem;
+        }
+
+        .featured-service-card .icon i {
+            font-size: 2rem;
+        }
+
+        .featured-service-card {
+            padding: 1.5rem;
+            margin: 0.5rem;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .featured-service-card h2 {
+            font-size: 1.75rem;
+            text-align: center;
+        }
+
+        .featured-service-card .lead {
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .featured-service-card .features-group {
+            margin-bottom: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .featured-service-card .features li {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .featured-service-card .btn-white {
+            width: 100%;
+            text-align: center;
+            padding: 0.75rem;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .featured-service-card .icon {
+            text-align: center;
+        }
+    }
+
+    /* Style pour l'étiquette populaire */
+    .popular-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: #0d6efd;
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3);
+        z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+        .popular-badge {
+            top: 0.75rem;
+            right: 0.75rem;
+            font-size: 0.8rem;
+            padding: 0.25rem 0.6rem;
+        }
+    }
+
+    /* Styles pour les services */
+    .service-card {
+        background: white;
+        border-radius: 20px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(0,0,0,0.1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .service-card .icon {
+        width: 60px;
+        height: 60px;
+        background: rgba(3,155,229,0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .service-card .icon i {
+        font-size: 1.5rem;
+        color: #039BE5;
+    }
+
+    .service-card h3 {
+        color: #333;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    .service-card p {
+        color: #666;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+
+    .service-card .price {
+        font-size: 2rem;
+        color: #039BE5;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    .service-card .price span {
+        font-size: 1rem;
+        color: #666;
+        font-weight: normal;
+    }
+
+    .service-card .features {
+        margin: 1.5rem 0;
+    }
+
+    .service-card .features li {
+        margin-bottom: 0.8rem;
+        color: #666;
+    }
+
+    .service-card .features li i {
+        color: #039BE5;
+        margin-right: 0.5rem;
+    }
+
+    /* Styles pour la navbar */
+    .navbar {
+        padding: 1.2rem 0;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        background-color: white !important;
+    }
+    
+    .navbar-brand {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #039BE5 !important;
+        letter-spacing: -0.5px;
+    }
+    
+    /* Nouveau style pour le menu burger */
+    .navbar-toggler {
+        border: none;
+        padding: 0;
+        width: 40px;
+        height: 40px;
+        position: relative;
+        border-radius: 50%;
+        background: rgba(3,155,229,0.1);
+        transition: all 0.3s ease;
+    }
+    
+    .navbar-toggler:hover {
+        background: rgba(3,155,229,0.15);
+    }
+    
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+    
+    .burger-icon {
+        position: relative;
+        width: 20px;
+        height: 14px;
+        margin: 13px auto;
+    }
+    
+    .burger-icon span {
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #039BE5;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+        left: 0;
+    }
+    
+    .burger-icon span:nth-child(1) { top: 0; }
+    .burger-icon span:nth-child(2) { top: 6px; }
+    .burger-icon span:nth-child(3) { top: 12px; }
+    
+    .navbar-toggler[aria-expanded="true"] .burger-icon span:nth-child(1) {
+        transform: rotate(45deg) translate(4px, 4px);
+    }
+    
+    .navbar-toggler[aria-expanded="true"] .burger-icon span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .navbar-toggler[aria-expanded="true"] .burger-icon span:nth-child(3) {
+        transform: rotate(-45deg) translate(4px, -4px);
+    }
+    
+    .nav-link {
+        color: #333 !important;
+        font-weight: 500;
+        padding: 0.8rem 1.5rem !important;
+        transition: all 0.3s ease;
+        position: relative;
+        font-size: 1.1rem;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+        color: #039BE5 !important;
+    }
+    
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 50%;
+        background-color: #039BE5;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+    
+    .nav-link:hover::after, .nav-link.active::after {
+        width: 70%;
+    }
+    
+    /* Responsive Styles pour la navbar */
+    @media (max-width: 991px) {
+        .navbar-collapse {
+            background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .nav-link {
+            padding: 1rem 1.5rem !important;
+            border-radius: 10px;
+            margin: 0.3rem 0;
+            font-size: 1.1rem;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background-color: rgba(3,155,229,0.1);
+            transform: translateX(5px);
+        }
+        
+        .nav-link::after {
+            display: none;
+        }
+    }
+    
+    /* Nouveau style pour le footer responsive */
+    .footer {
+        background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+        padding: 80px 0 40px;
+        margin-top: 80px;
+        border-top: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .footer h5 {
+        color: #039BE5;
+        font-weight: 600;
+        margin-bottom: 25px;
+        font-size: 1.3rem;
+    }
+    
+    .footer p {
+        color: #6c757d;
+        line-height: 1.8;
+        font-size: 1rem;
+    }
+    
+    .footer ul li {
+        margin-bottom: 15px;
+    }
+    
+    .footer ul li a {
+        color: #6c757d;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+        display: inline-block;
+        padding: 3px 0;
+    }
+    
+    .footer ul li a:hover {
+        color: #039BE5;
+        transform: translateX(5px);
+    }
+    
+    .footer .social-links {
+        margin-top: 30px;
+        display: flex;
+        gap: 20px;
+    }
+    
+    .footer .social-links a {
+        color: #6c757d;
+        font-size: 1.4rem;
+        transition: all 0.3s ease;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(3,155,229,0.1);
+    }
+    
+    .footer .social-links a:hover {
+        color: #039BE5;
+        transform: translateY(-3px);
+        background: rgba(3,155,229,0.15);
+    }
+    
+    .footer hr {
+        margin: 40px 0;
+        background-color: rgba(0,0,0,0.05);
+        height: 1px;
+    }
+    
+    .footer .copyright {
+        color: #6c757d;
+        font-size: 0.95rem;
+    }
+    
+    /* Footer Responsive */
+    @media (max-width: 768px) {
+        .footer {
+            padding: 60px 0 30px;
+            text-align: left;
+        }
+        
+        .footer .col-md-4 {
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+        
+        .footer h5 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .footer .social-links {
+            justify-content: flex-start;
+            margin-top: 25px;
+        }
+        
+        .footer ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer ul li a {
+            font-size: 0.95rem;
+        }
+    }
+    
+    /* Style commun pour tous les boutons */
+    .btn {
+        padding: 0.8rem 1.8rem;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+        font-size: 0.95rem;
+    }
+
+    .btn-lg {
+        padding: 1rem 2.2rem;
+        font-size: 1.1rem;
+    }
+
+    .btn-primary {
+        background: #039BE5;
+        border-color: #039BE5;
+        color: white !important;
+        box-shadow: 0 4px 15px rgba(3,155,229,0.2);
+    }
+
+    .btn-primary:hover, 
+    .btn-primary:focus,
+    .btn-primary:active {
+        background: #0288d1 !important;
+        border-color: #0288d1 !important;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(3,155,229,0.3) !important;
+    }
+
+    .btn-outline-primary {
+        border: 2px solid #039BE5;
+        color: #039BE5;
+        background: transparent;
+    }
+
+    .btn-outline-primary:hover,
+    .btn-outline-primary:focus,
+    .btn-outline-primary:active {
+        background: #039BE5 !important;
+        border-color: #039BE5 !important;
+        color: white !important;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(3,155,229,0.3) !important;
+    }
+
+    /* Ajustement pour les boutons sur mobile */
+    @media (max-width: 768px) {
+        .btn {
+            padding: 0.7rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .btn-lg {
+            padding: 0.8rem 1.8rem;
+            font-size: 1rem;
+        }
+    }
+    
+    /* Styles pour les témoignages */
+    #testimonials {
+        background: linear-gradient(to bottom right, #f8f9fa, #ffffff);
+        padding: 80px 0;
+        margin-top: 40px;
+    }
+
+    .testimonial-card {
+        background: white;
+        border-radius: 15px;
+        padding: 2rem;
+        margin: 1rem;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    .testimonial-content {
+        text-align: center;
+    }
+
+    .stars {
+        color: #ffc107;
+        font-size: 1.1rem;
+    }
+
+    .testimonial-text {
+        color: #6c757d;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin: 1.5rem 0;
+        font-style: italic;
+    }
+
+    .testimonial-author h5 {
+        color: #333;
+        margin-bottom: 0.3rem;
+        font-weight: 600;
+    }
+
+    .testimonial-author p {
+        color: #6c757d;
+        font-size: 0.9rem;
+    }
+
+    /* Styles Swiper */
+    .testimonials-slider {
+        padding-bottom: 50px;
+    }
+
+    .swiper-pagination {
+        bottom: 0 !important;
+    }
+
+    .swiper-pagination-bullet {
+        background: var(--primary-color) !important;
+        opacity: 0.5;
+    }
+
+    .swiper-pagination-bullet-active {
+        opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+        #testimonials {
+            padding: 60px 0;
+        }
+
+        .testimonial-card {
+            padding: 1.5rem;
+            margin: 0.5rem;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+        }
+    }
+
+    /* Styles pour les cartes de prix en version mobile */
+    .pricing-card {
+        padding: 2rem;
+        border-radius: 15px;
+        background: white;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+
+    .pricing-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .pricing-card h3 {
+        color: #333;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    .pricing-card .price {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 2rem;
+    }
+
+    .pricing-card .price span {
+        font-size: 1rem;
+        font-weight: 400;
+        color: #6c757d;
+    }
+
+    .pricing-card.featured {
+        background: linear-gradient(to bottom right, #039BE5, #0288d1);
+        color: white;
+    }
+
+    .pricing-card.featured h3,
+    .pricing-card.featured .price {
+        color: white;
+    }
+
+    .pricing-card.featured .price span {
+        color: rgba(255,255,255,0.8);
+    }
+
+    .features-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 2rem 0;
+    }
+
+    .features-list li {
+        padding: 0.8rem 0;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        color: #6c757d;
+    }
+
+    .pricing-card.featured .features-list li {
+        border-bottom-color: rgba(255,255,255,0.2);
+        color: white;
+    }
+
+    @media (max-width: 768px) {
+        .pricing-card {
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card .price {
+            font-size: 2rem;
+        }
+
+        .features-list li {
+            font-size: 0.9rem;
+        }
+    }
+
+    /* Styles pour les prix */
+    .price-toggle {
+        text-align: center;
+        margin: 2rem auto 3.5rem;
+        max-width: 320px;
+    }
+
+    .price-toggle .btn-group {
+        width: 100%;
+        background: white;
+        padding: 0.4rem;
+        border-radius: 50px;
+        box-shadow: 0 2px 8px rgba(3,155,229,0.12);
+        display: flex;
+        gap: 4px;
+        border: 1px solid rgba(3,155,229,0.15);
+    }
+
+    .price-toggle .btn {
+        flex: 1;
+        border-radius: 50px;
+        padding: 0.8rem 1.2rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        background: transparent;
+        color: #039BE5;
+    }
+
+    .price-toggle .btn:hover {
+        background: rgba(3,155,229,0.08);
+    }
+
+    .price-toggle .btn.active {
+        background: #039BE5;
+        color: white;
+        box-shadow: 0 2px 6px rgba(3,155,229,0.25);
+    }
+
+    /* Style amélioré pour la pastille de réduction */
+    .annual-price {
+        position: relative;
+        margin-top: 1rem;
+        padding-top: 0.5rem;
+    }
+
+    .annual-price .savings-badge {
+        position: absolute;
+        top: -6px;
+        right: -12px;
+        background: #039BE5; /* Bleu plus foncé pour un meilleur contraste */
+        color: white;
+        padding: 0.35rem 0.8rem;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        transform: translateY(0);
+        box-shadow: 0 2px 6px rgba(2,119,189,0.25);
+        border: 1px solid rgba(255,255,255,0.4);
+        letter-spacing: 0.3px;
+        transition: all 0.3s ease;
+    }
+
+    .pricing-card:hover .savings-badge {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(2,119,189,0.3);
+    }
+
+    .pricing-card.featured .annual-price .savings-badge {
+        background: #E1F5FE; /* Bleu très clair */
+        color: #0277BD;
+        border: 1px solid rgba(2,119,189,0.2);
+        box-shadow: 0 2px 6px rgba(2,119,189,0.15);
+    }
+
+    /* Style amélioré pour les prix */
+    .original-price {
+        text-decoration: line-through;
+        color: #8c8c8c;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        opacity: 0.85;
+        font-weight: 500;
+    }
+
+    .discounted-price {
+        color: #0277BD;
+        font-weight: bold;
+        font-size: 2.5rem;
+    }
+
+    .pricing-card.featured .discounted-price {
+        color: white;
+    }
+
+    .pricing-card.featured .original-price {
+        color: rgba(255,255,255,0.8);
+    }
+
+    @media (max-width: 768px) {
+        .price-toggle {
+            margin: 1.5rem auto 2.5rem;
+            max-width: 280px;
+        }
+        
+        .price-toggle .btn {
+            padding: 0.7rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .annual-price .savings-badge {
+            padding: 0.3rem 0.7rem;
+            font-size: 0.8rem;
+            right: -10px;
+            top: -5px;
+        }
+
+        .discounted-price {
+            font-size: 2.2rem;
+        }
+    }
+    
+    /* Style pour le conteneur de prix */
+    .price-container {
+        text-align: center;
+        margin: 1.5rem 0;
+        position: relative;
+    }
+    
+    .price {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 0.25rem;
+        line-height: 1.2;
+    }
+    
+    .price span {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    
+    .annual-commitment {
+        font-size: 0.85rem;
+        color: #666;
+        opacity: 0.85;
+        letter-spacing: 0.2px;
+        margin-top: 0.25rem;
+    }
+
+    /* Style spécifique pour desktop */
+    @media (min-width: 992px) {
+        .price-container {
+            margin: 2rem 0;
+        }
+
+        .price {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .annual-commitment {
+            position: relative;
+            font-size: 0.8rem;
+            padding: 0.4rem 0;
+        }
+
+        .annual-commitment::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 1px;
+            background: currentColor;
+            opacity: 0.2;
+        }
+    }
+    
+    .pricing-card.featured .price {
+        color: white;
+    }
+    
+    .pricing-card.featured .annual-commitment {
+        color: rgba(255, 255, 255, 0.9);
+    }
+    </style>
+</head>
+<body>
+    <!-- Navigation avec nouveau burger menu -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Boutikoo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <div class="burger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tarifs.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="creations.html">Créations</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Card prix minimum améliorée -->
+    <section class="services-section py-5" style="padding-top: 120px !important;">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h1 class="display-4 mb-3">Nos Services</h1>
+                <p class="lead text-muted">Des solutions sur mesure pour votre succès en ligne</p>
+            </div>
+
+            <!-- Carte principale pour la création de sites web -->
+            <div class="featured-service-card text-center">
+                <div class="icon mb-4">
+                    <i class="fas fa-laptop-code fa-3x"></i>
+                </div>
+                <h2>Création de Sites Internet</h2>
+                <p class="lead mb-4">Des solutions web professionnelles adaptées à vos besoins</p>
+                <div class="row justify-content-center g-3">
+                    <div class="col-md-4">
+                        <div class="features-group mb-4">
+                            <h4 class="h5 mb-3">Site Vitrine</h4>
+                            <ul class="features list-unstyled">
+                                <li><i class="fas fa-check"></i> Design personnalisé</li>
+                                <li><i class="fas fa-check"></i> Responsive design</li>
+                                <li><i class="fas fa-check"></i> Optimisation SEO</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="features-group mb-4">
+                            <h4 class="h5 mb-3">Site E-commerce</h4>
+                            <ul class="features list-unstyled">
+                                <li><i class="fas fa-check"></i> Gestion des produits</li>
+                                <li><i class="fas fa-check"></i> Paiement sécurisé</li>
+                                <li><i class="fas fa-check"></i> Suivi des commandes</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="features-group">
+                            <h4 class="h5 mb-3">Site sur Mesure</h4>
+                            <ul class="features list-unstyled">
+                                <li><i class="fas fa-check"></i> Fonctionnalités avancées</li>
+                                <li><i class="fas fa-check"></i> Interface administrative</li>
+                                <li><i class="fas fa-check"></i> Formation incluse</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <a href="contact.html" class="btn btn-white btn-lg">Demander un devis</a>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Service 1 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <div class="icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h3>Shooting Photo</h3>
+                        <p>Photos professionnelles de vos produits pour mettre en valeur votre boutique en ligne.</p>
+                        <div class="price">Sur devis</div>
+                        <ul class="features list-unstyled">
+                            <li><i class="fas fa-check"></i> Session photo professionnelle</li>
+                            <li><i class="fas fa-check"></i> Post-traitement inclus</li>
+                            <li><i class="fas fa-check"></i> Livraison haute résolution</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-primary w-100">Nous contacter</a>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <span class="popular-badge">Populaire</span>
+                        <div class="icon">
+                            <i class="fas fa-pencil-alt"></i>
+                        </div>
+                        <h3>Rédaction Web</h3>
+                        <p>Contenu optimisé SEO pour vos descriptions de produits et pages web.</p>
+                        <div class="price">Sur devis</div>
+                        <ul class="features list-unstyled">
+                            <li><i class="fas fa-check"></i> Optimisation SEO</li>
+                            <li><i class="fas fa-check"></i> Ton adapté à votre marque</li>
+                            <li><i class="fas fa-check"></i> Révisions incluses</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-primary w-100">Nous contacter</a>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
+                        <span class="popular-badge">Populaire</span>
+                        <div class="icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Boite Mail Personnalisée</h3>
+                        <p>Boite mail personnalisé pour crédibiliser votre activité.</p>
+                        <div class="price">Sur devis</div>
+                        <ul class="features list-unstyled">
+                            <li><i class="fas fa-check"></i> Nom de votre boite mail</li>
+                            <li><i class="fas fa-check"></i> Espace de stockage</li>
+                            <li><i class="fas fa-check"></i> Haute protection</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-primary w-100">Nous contacter</a>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card">
+                        <div class="icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Application Mobile</h3>
+                        <p>Développement d'une application mobile native pour votre boutique.</p>
+                        <div class="price">Sur devis</div>
+                        <ul class="features list-unstyled">
+                            <li><i class="fas fa-check"></i> iOS et Android</li>
+                            <li><i class="fas fa-check"></i> Interface personnalisée</li>
+                            <li><i class="fas fa-check"></i> Support technique</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-primary w-100">Nous contacter</a>
+                    </div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-card">
+                        <div class="icon">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                        <h3>Systeme d'emailing</h3>
+                        <p>Création et gestion d'un système d'emailing pour vos clients.</p>
+                        <div class="price">Sur devis</div>
+                        <ul class="features list-unstyled">
+                            <li><i class="fas fa-check"></i> Statistiques complètes</li>
+                            <li><i class="fas fa-check"></i> Emailing multi-canal</li>
+                            <li><i class="fas fa-check"></i> Campagnes optimiséess</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-primary w-100">Nous contacter</a>
+                    </div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-card">
+                        <div class="icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>Nom de domaine personnalisé</h3>
+                        <p>Création d'un nom de domaine personnalisé pour votre activité.</p>
+                        <div class="price">Sur devis</div>
+                        <ul class="features list-unstyled">
+                            <li><i class="fas fa-check"></i> Nom de domaine en .fr ou .com</li>
+                            <li><i class="fas fa-check"></i> Facile à retenir</li>
+                            <li><i class="fas fa-check"></i> Disponible sur plusieurs années</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-primary w-100">Nous contacter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Ce que nos clients disent</h2>
+            <div class="swiper testimonials-slider">
+                <div class="swiper-wrapper d-flex flex-wrap justify-content-center testimonials-grid">
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <div class="stars mb-3">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </div>
+                                <p class="testimonial-text">"Grâce à Boutikoo, j'ai pu lancer ma boutique en ligne en quelques jours seulement."</p>
+                                <div class="testimonial-author">
+                                    <h5>Marie D.</h5>
+                                    <p>Boutique de Mode</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <div class="stars mb-3">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </div>
+                                <p class="testimonial-text">"L'équipe de Boutikoo a parfaitement compris mes besoins. Mon site e-commerce dépasse mes attentes !"</p>
+                                <div class="testimonial-author">
+                                    <h5>Thomas L.</h5>
+                                    <p>Articles de Sport</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <div class="stars mb-3">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </div>
+                                <p class="testimonial-text">"Je recommande vivement Boutikoo. Leur solution est et très professionnelle."</p>
+                                <div class="testimonial-author">
+                                    <h5>Sophie M.</h5>
+                                    <p>Bijouterie Artisanale</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer amélioré -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Boutikoo</h5>
+                    <p>Votre partenaire e-commerce de confiance pour développer votre présence en ligne et augmenter vos ventes.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5>Liens rapides</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="tarifs.html">Tarifs</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Informations légales</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="mentions-legales.html">Mentions légales</a></li>
+                        <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
+                        <li><a href="cgv.html">Conditions générales de vente</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center copyright">
+                <p>&copy; 2024 Boutikoo. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

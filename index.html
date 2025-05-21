@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutikoo - Création de sites e-commerce</title>
+    <link rel="icon" type="image/jpeg" href="images/4x/logo.png">
+    <link rel="apple-touch-icon" href="images/4x/Fichier 6@4x-100.jpg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- Ajout de Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+    :root {
+        --primary-color: #039BE5;
+        --primary-color-dark: #0288d1;
+        --primary-color-light: rgba(3,155,229,0.1);
+    }
+
+    /* Styles pour la navbar */
+    .navbar {
+        padding: 1.2rem 0;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        background-color: white !important;
+    }
+    
+    .navbar-brand {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--primary-color) !important;
+        letter-spacing: -0.5px;
+    }
+    
+    /* Nouveau style pour le menu burger */
+    .navbar-toggler {
+        border: none;
+        padding: 0;
+        width: 40px;
+        height: 40px;
+        position: relative;
+        border-radius: 50%;
+        background: var(--primary-color-light);
+        transition: all 0.3s ease;
+    }
+    
+    .navbar-toggler:hover {
+        background: rgba(3,155,229,0.15);
+    }
+    
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+    
+    .burger-icon {
+        position: relative;
+        width: 20px;
+        height: 14px;
+        margin: 13px auto;
+    }
+    
+    .burger-icon span {
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: var(--primary-color);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+        left: 0;
+    }
+    
+    .burger-icon span:nth-child(1) { top: 0; }
+    .burger-icon span:nth-child(2) { top: 6px; }
+    .burger-icon span:nth-child(3) { top: 12px; }
+    
+    .navbar-toggler[aria-expanded="true"] .burger-icon span:nth-child(1) {
+        transform: rotate(45deg) translate(4px, 4px);
+    }
+    
+    .navbar-toggler[aria-expanded="true"] .burger-icon span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .navbar-toggler[aria-expanded="true"] .burger-icon span:nth-child(3) {
+        transform: rotate(-45deg) translate(4px, -4px);
+    }
+    
+    .nav-link {
+        color: #333 !important;
+        font-weight: 500;
+        padding: 0.8rem 1.5rem !important;
+        transition: all 0.3s ease;
+        position: relative;
+        font-size: 1.1rem;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+        color: var(--primary-color) !important;
+    }
+    
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 50%;
+        background-color: var(--primary-color);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+    
+    .nav-link:hover::after, .nav-link.active::after {
+        width: 70%;
+    }
+    
+    /* Responsive Styles pour la navbar */
+    @media (max-width: 991px) {
+        .navbar-collapse {
+            background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .nav-link {
+            padding: 1rem 1.5rem !important;
+            border-radius: 10px;
+            margin: 0.3rem 0;
+            font-size: 1.1rem;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--primary-color-light);
+            transform: translateX(5px);
+        }
+        
+        .nav-link::after {
+            display: none;
+        }
+    }
+    
+    /* Nouveau style pour le footer responsive */
+    .footer {
+        background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+        padding: 80px 0 40px;
+        margin-top: 80px;
+        border-top: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .footer h5 {
+        color: var(--primary-color);
+        font-weight: 600;
+        margin-bottom: 25px;
+        font-size: 1.3rem;
+    }
+    
+    .footer p {
+        color: #6c757d;
+        line-height: 1.8;
+        font-size: 1rem;
+    }
+    
+    .footer ul li {
+        margin-bottom: 15px;
+    }
+    
+    .footer ul li a {
+        color: #6c757d;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+        display: inline-block;
+        padding: 3px 0;
+    }
+    
+    .footer ul li a:hover {
+        color: var(--primary-color);
+        transform: translateX(5px);
+    }
+    
+    .footer .social-links {
+        margin-top: 30px;
+        display: flex;
+        gap: 20px;
+    }
+    
+    .footer .social-links a {
+        color: #6c757d;
+        font-size: 1.4rem;
+        transition: all 0.3s ease;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: var(--primary-color-light);
+    }
+    
+    .footer .social-links a:hover {
+        color: var(--primary-color);
+        transform: translateY(-3px);
+        background: rgba(3,155,229,0.15);
+    }
+    
+    .footer hr {
+        margin: 40px 0;
+        background-color: rgba(0,0,0,0.05);
+        height: 1px;
+    }
+    
+    .footer .copyright {
+        color: #6c757d;
+        font-size: 0.95rem;
+    }
+    
+    /* Footer Responsive */
+    @media (max-width: 768px) {
+        .footer {
+            padding: 60px 0 30px;
+            text-align: left;
+        }
+        
+        .footer .col-md-4 {
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+        
+        .footer h5 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .footer .social-links {
+            justify-content: flex-start;
+            margin-top: 25px;
+        }
+        
+        .footer ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer ul li a {
+            font-size: 0.95rem;
+        }
+    }
+
+    /* Styles pour la section hero */
+    #hero {
+        padding: 120px 0 60px;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background-color: #f8f9fa;
+    }
+
+    #hero .text-content {
+        padding-right: 2rem;
+    }
+
+    #hero h1 {
+        font-size: 3.5rem;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+        color: #333;
+    }
+
+    #hero .lead {
+        font-size: 1.25rem;
+        line-height: 1.6;
+        color: #6c757d;
+        margin-bottom: 2rem;
+    }
+
+    #hero .hero-image {
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+    }
+
+    #hero .hero-image img {
+        width: 100%;
+        height: auto;
+        transform: scale(1);
+        transition: transform 0.3s ease;
+    }
+
+    #hero .hero-image:hover img {
+        transform: scale(1.02);
+    }
+
+    #hero .hero-button {
+        margin-top: 2rem;
+    }
+
+    /* Desktop styles */
+    @media (min-width: 992px) {
+        #hero .text-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        #hero .hero-image-container {
+            display: flex;
+            align-items: center;
+        }
+
+        #hero .hero-image {
+            margin-bottom: 0;
+        }
+
+        #hero .hero-button {
+            margin-top: 2.5rem;
+        }
+    }
+
+    /* Ajustements pour mobile */
+    @media (max-width: 768px) {
+        #hero {
+            padding: 100px 0 40px;
+            text-align: center;
+        }
+
+        #hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        #hero .lead {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            padding: 0 15px;
+        }
+
+        #hero .hero-image {
+            margin: 1rem 0;
+        }
+
+        #hero .hero-button {
+            margin-top: 1rem;
+        }
+
+        #hero .btn-lg {
+            padding: 0.8rem 1.8rem;
+            font-size: 1rem;
+        }
+    }
+
+    /* Ajustements pour tablettes */
+    @media (min-width: 769px) and (max-width: 991px) {
+        #hero {
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        #hero h1 {
+            font-size: 2.8rem;
+        }
+
+        #hero .hero-image {
+            margin: 2.5rem 0;
+        }
+    }
+
+    /* Style commun pour tous les boutons */
+    .btn {
+        padding: 0.8rem 1.8rem;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+        font-size: 0.95rem;
+    }
+
+    .btn-lg {
+        padding: 1rem 2.2rem;
+        font-size: 1.1rem;
+    }
+
+    .btn-primary {
+        background: var(--primary-color);
+        border-color: var(--primary-color);
+        color: white !important;
+        box-shadow: 0 4px 15px rgba(3,155,229,0.2);
+    }
+
+    .btn-primary:hover, 
+    .btn-primary:focus,
+    .btn-primary:active {
+        background: var(--primary-color-dark) !important;
+        border-color: var(--primary-color-dark) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(3,155,229,0.3) !important;
+    }
+
+    .btn-outline-primary {
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
+        background: transparent;
+    }
+
+    .btn-outline-primary:hover,
+    .btn-outline-primary:focus,
+    .btn-outline-primary:active {
+        background: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+        color: white !important;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(3,155,229,0.3) !important;
+    }
+
+    /* Ajustement pour les boutons sur mobile */
+    @media (max-width: 768px) {
+        .btn {
+            padding: 0.7rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .btn-lg {
+            padding: 0.8rem 1.8rem;
+            font-size: 1rem;
+        }
+    }
+
+    /* Styles pour la section About */
+    #about {
+        padding: 80px 0;
+        background-color: #fff;
+    }
+
+    #about h3 {
+        color: #333;
+        margin-bottom: 1.5rem;
+        font-size: 2rem;
+        font-weight: 600;
+    }
+
+    #about .lead {
+        color: #6c757d;
+        line-height: 1.8;
+    }
+
+    .about-features {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-top: 3rem;
+        padding: 2rem;
+        background: linear-gradient(to right, rgba(3,155,229,0.03), rgba(3,155,229,0.08));
+        border-radius: 15px;
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .feature-item i {
+        font-size: 1.2rem;
+        color: var(--primary-color);
+    }
+
+    .feature-item span {
+        font-size: 1rem;
+        color: #444;
+    }
+
+    @media (max-width: 768px) {
+        .about-features {
+            grid-template-columns: 1fr;
+            padding: 1.5rem;
+        }
+    }
+
+    /* Ajustement du titre */
+    .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+        display: block !important;
+    }
+
+    .section-subtitle {
+        text-align: center;
+        color: var(--primary-color);
+        margin-bottom: 2rem;
+    }
+
+    .content-divider {
+        width: 80px;
+        height: 3px;
+        background: var(--primary-color);
+        margin: 1.5rem auto;
+    }
+
+    /* Styles pour les compteurs */
+    .counter-section {
+        margin-top: 3rem;
+        padding: 2rem 0;
+        background: linear-gradient(to right, rgba(3,155,229,0.03), rgba(3,155,229,0.08));
+        border-radius: 15px;
+    }
+    
+    .counter-box {
+        text-align: center;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+    }
+    
+    .counter-box:hover {
+        transform: translateY(-5px);
+    }
+    
+    .counter-number {
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        line-height: 1;
+    }
+    
+    .counter-label {
+        font-size: 1rem;
+        color: #666;
+        margin-bottom: 0;
+    }
+    
+    .counter-icon {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        opacity: 0.8;
+    }
+
+    @media (max-width: 991px) {
+        .counter-section {
+            margin-top: 2rem;
+        }
+        .counter-box {
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .counter-number {
+            font-size: 2.4rem;
+        }
+    }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10"/>
+            </svg>
+        </div>
+    </div>
+    
+    <!-- Navigation avec nouveau burger menu -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Boutikoo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <div class="burger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tarifs.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="creations.html">Créations</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 text-content">
+                    <h1 class="display-4 fw-bold">Boostez votre activité avec un site sur mesure</h1>
+                    <p class="lead">Boutikoo a pour objectif d'accompagner les professionnels dans leur transition vers la présence en ligne en créant des sites performants, optimisés et adaptés à leurs besoins.</p>
+                    <div class="hero-button d-none d-lg-block">
+                        <a href="tarifs.html" class="btn btn-primary btn-lg">Découvrir nos services</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 hero-image-container">
+                    <div class="hero-image">
+                        <img src="images/accueil.jpg" alt="Boutikoo Hero" class="img-fluid">
+                    </div>
+                </div>
+                <!-- Bouton visible uniquement sur mobile/tablette -->
+                <div class="col-12 hero-button d-block d-lg-none text-center">
+                    <a href="tarifs.html" class="btn btn-primary btn-lg">Découvrir nos services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Boutikoo Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Qu'est-ce que Boutikoo ?</h2>
+            <div class="row align-items-center">
+                <div class="about-content">
+                    <h3 class="section-subtitle">Votre partenaire tout-en-un</h3>
+                    <div class="content-divider"></div>
+                    <p class="lead mb-4 text-center">Nous prenons en charge la création de votre site internet, son référencement sur Google, son optimisation SEO pour garantir une visibilité maximale et bien plus… </p>
+                    
+                    <!-- Compteurs intégrés -->
+                    <div class="counter-section">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="counter-box">
+                                    <i class="fas fa-laptop-code counter-icon"></i>
+                                    <div class="counter-number" data-target="75">0</div>
+                                    <p class="counter-label">Sites créés</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="counter-box">
+                                    <i class="fas fa-handshake counter-icon"></i>
+                                    <div class="counter-number" data-target="15">0</div>
+                                    <p class="counter-label">Partenaires</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="counter-box">
+                                    <i class="fas fa-star counter-icon"></i>
+                                    <div class="counter-number" data-target="8">0</div>
+                                    <p class="counter-label">Années d'expérience</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Site professionnel et personnalisé</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Accompagnement technique et marketing</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Solutions de paiement sécurisées</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Hébergement et maintenance inclus</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Pourquoi choisir Boutikoo ?</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Rapidité de mise en ligne</h3>
+                        <p>Votre boutique en ligne opérationnelle en quelques jours seulement. Notre équipe s'occupe de tout pour vous permettre de démarrer rapidement.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3>Design sur mesure</h3>
+                        <p>Des designs modernes et personnalisés qui reflètent l'identité de votre marque. Une expérience utilisateur optimisée pour convertir vos visiteurs.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>Support dédié</h3>
+                        <p>Une équipe à votre écoute pour vous accompagner dans le développement de votre activité en ligne. Support technique et conseils marketing inclus.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>100% Responsive</h3>
+                        <p>Vos clients peuvent acheter depuis n'importe quel appareil. Nos sites sont optimisés pour une expérience parfaite sur mobile, tablette et ordinateur.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>SEO Optimisé</h3>
+                        <p>Votre site est conçue pour être visible sur les moteurs de recherche. Augmentez votre trafic organique et vos ventes naturellement.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Sécurité garantie</h3>
+                        <p>Protection SSL, mises à jour régulières et sauvegardes automatiques. Vos données et celles de vos clients sont en sécurité.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="text-center my-5">
+        <a href="creations.html" class="btn btn-primary btn-lg">Voir des exemples</a>
+    </div>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Ce que nos clients disent</h2>
+            <div class="swiper testimonials-slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <div class="stars mb-3">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </div>
+                                <p class="testimonial-text">"Grâce à Boutikoo, j'ai pu lancer ma boutique en ligne en quelques jours seulement."</p>
+                                <div class="testimonial-author">
+                                    <h5>Marie D.</h5>
+                                    <p>Boutique de Mode</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <div class="stars mb-3">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </div>
+                                <p class="testimonial-text">"L'équipe de Boutikoo a parfaitement compris mes besoins. Mon site e-commerce dépasse mes attentes !"</p>
+                                <div class="testimonial-author">
+                                    <h5>Thomas L.</h5>
+                                    <p>Articles de Sport</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <div class="stars mb-3">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </div>
+                                <p class="testimonial-text">"Je recommande vivement Boutikoo. Leur solution est et très professionnelle."</p>
+                                <div class="testimonial-author">
+                                    <h5>Sophie M.</h5>
+                                    <p>Bijouterie Artisanale</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section id="clients" class="py-5 clients-bg">
+        <h2 class="text-center mb-5">Ils nous font confiance</h2>
+        <div class="container">
+            <div class="clients-slider swiper">
+                <div class="swiper-wrapper">
+                    <!-- Premier groupe de logos -->
+                    <div class="swiper-slide">
+                        <div class="client-logo">
+                            <img src="images/clients/Fichier 1@4x-8.png" alt="Client Logo" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="client-logo">
+                            <img src="images/clients/Fichier 3@4x-8.png" alt="Client Logo" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="client-logo">
+                            <img src="images/clients/Fichier 4@4x-8.png" alt="Client Logo" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="client-logo">
+                            <img src="images/clients/Fichier 5@4x-8.png" alt="Client Logo" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="client-logo">
+                            <img src="images/clients/Fichier 6.png" alt="Client Logo" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="client-logo">
+                            <img src="images/clients/Logo noir.png" alt="Client Logo" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="client-logo">
+                            <img src="images/clients/Logo png 2.png" alt="Client Logo" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="client-logo">
+                            <img src="images/clients/logofiinal.png" alt="Client Logo" class="img-fluid">
+                        </div>
+                    </div>
+                    <!-- Duplication des premiers logos pour une transition fluide -->
+                    <div class="swiper-slide">
+                        <div class="client-logo">
+                            <img src="images/clients/Fichier 1@4x-8.png" alt="Client Logo" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="client-logo">
+                            <img src="images/clients/Fichier 3@4x-8.png" alt="Client Logo" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="client-logo">
+                            <img src="images/clients/Fichier 4@4x-8.png" alt="Client Logo" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Boutikoo</h5>
+                <p>Votre partenaire e-commerce de confiance pour développer votre présence en ligne et augmenter vos ventes.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h5>Liens rapides</h5>
+                <ul class="list-unstyled">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="tarifs.html">Tarifs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Informations légales</h5>
+                <ul class="list-unstyled">
+                    <li><a href="mentions-legales.html">Mentions légales</a></li>
+                    <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
+                    <li><a href="cgv.html">Conditions générales de vente</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <div class="text-center copyright">
+            <p>&copy; 2024 Boutikoo. Tous droits réservés.</p>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script>
+        // Animation des compteurs
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000; // 2 secondes
+            const interval = 50; // Mise à jour toutes les 50ms
+            let current = 0;
+            const increment = (target / duration) * interval;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.round(current);
+                }
+            }, interval);
+        }
+
+        // Démarrer l'animation des compteurs quand ils sont visibles
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = document.querySelectorAll('.counter-number');
+                    counters.forEach(counter => {
+                        animateCounter(counter);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Observer la section des compteurs
+        const counterSection = document.querySelector('.counter-section');
+        if (counterSection) {
+            observer.observe(counterSection);
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

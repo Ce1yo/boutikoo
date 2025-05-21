@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditions Générales de Vente - Boutikoo</title>
+    <link rel="icon" type="image/jpeg" href="images/4x/Fichier 6@4x-100.jpg">
+    <link rel="apple-touch-icon" href="images/4x/Fichier 6@4x-100.jpg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Styles pour la navbar */
+        .navbar {
+            padding: 1.2rem 0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            background-color: white !important;
+        }
+        
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #039BE5 !important;
+            letter-spacing: -0.5px;
+        }
+        
+        /* Style du menu burger */
+        .navbar-toggler {
+            border: none;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            position: relative;
+            border-radius: 50%;
+            background: rgba(3,155,229,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-toggler:hover {
+            background: rgba(3,155,229,0.15);
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+        
+        .burger-icon {
+            position: relative;
+            width: 20px;
+            height: 14px;
+            margin: 13px auto;
+        }
+        
+        .burger-icon span {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #039BE5;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            left: 0;
+        }
+        
+        .burger-icon span:nth-child(1) { top: 0; }
+        .burger-icon span:nth-child(2) { top: 6px; }
+        .burger-icon span:nth-child(3) { top: 12px; }
+        
+        .nav-link {
+            color: #333 !important;
+            font-weight: 500;
+            padding: 0.8rem 1.5rem !important;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 1.1rem;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: #039BE5 !important;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 10px;
+            left: 50%;
+            background-color: #039BE5;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after {
+            width: calc(100% - 3rem);
+        }
+
+        /* Correction des animations du burger menu */
+        .navbar-toggler[aria-expanded="true"] .burger-icon span:nth-child(1) {
+            transform: rotate(45deg) translate(4px, 4px);
+        }
+        
+        .navbar-toggler[aria-expanded="true"] .burger-icon span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .navbar-toggler[aria-expanded="true"] .burger-icon span:nth-child(3) {
+            transform: rotate(-45deg) translate(4px, -4px);
+        }
+
+        /* Styles pour le contenu légal */
+        .legal-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .legal-content h2 {
+            color: #039BE5;
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .legal-content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer styles */
+        .footer {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer h5 {
+            color: #039BE5;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .footer p {
+            color: #999;
+            margin-bottom: 1rem;
+        }
+
+        .footer .social-links {
+            margin-top: 2rem;
+        }
+
+        .footer .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: #fff;
+            background: rgba(255,255,255,0.1);
+            margin-right: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer .social-links a:hover {
+            color: #039BE5;
+            transform: translateY(-3px);
+            background: rgba(3,155,229,0.15);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation avec nouveau burger menu -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Boutikoo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <div class="burger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tarifs.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="creations.html">Créations</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header py-5 bg-light" style="margin-top: 80px;">
+        <div class="container">
+            <h1 class="display-4 text-center mb-4">Conditions Générales de Vente</h1>
+            <p class="lead text-center text-muted">Conditions d'utilisation des services Boutikoo</p>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="legal-content">
+                <h2>1. Objet</h2>
+                <p>Les présentes CGV définissent les conditions dans lesquelles Boutikoo propose la création, la gestion et l’optimisation SEO de sites internet sous forme d’abonnement mensuel ou annuel.</p>
+
+                <h2>2. Services</h2>
+                <p>Boutikoo propose trois abonnements distincts avec des avantages progressifs. Les abonnements incluent :
+                    La création d’un site internet clé en main
+                    L’hébergement du site
+                    La gestion et la maintenance
+                    L’optimisation SEO selon l’offre choisie
+                    Un suivi et des audits réguliers
+                    Les abonnements sont disponibles au mois ou à l’année, avec un tarif préférentiel pour les souscriptions annuelles.</p>
+
+                <h2>3. Prix et paiement</h2>
+                <p>Les prix affichés sont exprimés en euros (€).
+                    Le paiement s’effectue par prélèvement automatique mensuel ou annuel.
+                    L’abonnement démarre à la date de création du site et se renouvelle automatiquement à chaque échéance.</p>
+
+                <h2>4. Durée et résiliation</h2>
+                <p>Le client peut se rétracter avec un préavis de 2 mois, qu'il soit abonné au mois ou à l’année.
+                    Toute demande de résiliation doit être envoyée par e-mail à contact@boutikoo.fr.
+                    Aucun remboursement ne sera effectué en cas de résiliation avant la fin de la période en cours.</p>
+
+                <h2>5. Responsabilité</h2>
+                <p>Boutikoo s’engage à :
+                    Fournir un site fonctionnel et hébergé dès la souscription.
+                    Assurer une disponibilité et maintenance du site selon l’abonnement choisi.
+                    Optimiser le SEO du site conformément aux prestations incluses.</p>
+
+                <h2>6. Confidentialité</h2>
+                <p>Boutikoo ne peut être tenu responsable des interruptions de service dues à l’hébergeur.
+                    Le client est responsable du contenu qu’il publie sur son site.
+                    Toute demande de modification non incluse dans l’abonnement peut entraîner des frais supplémentaires.</p>
+
+                <h2>7. Collecte des données</h2>
+                <p>Boutikoo ne collecte que les informations nécessaires à la gestion des abonnements. Aucune donnée ne sera revendue ou partagée avec des tiers.</p>
+
+                <h2>8. Modifications des CGV</h2>
+                <p>Les CGV peuvent être modifiées sans préavis, qu’elles sont modifiées par l’agence ou par l’entreprise.
+                    Toute modification entrera en vigueur à la date de sa signature sur le site.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-4">
+                    <h5>Boutikoo</h5>
+                    <p>Votre partenaire pour la création de sites web professionnels et l'optimisation SEO.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5>Liens rapides</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-light text-decoration-none mb-2 d-block">Accueil</a></li>
+                        <li><a href="tarifs.html" class="text-light text-decoration-none mb-2 d-block">Tarifs</a></li>
+                        <li><a href="contact.html" class="text-light text-decoration-none mb-2 d-block">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Informations légales</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="mentions-legales.html" class="text-light text-decoration-none mb-2 d-block">Mentions légales</a></li>
+                        <li><a href="cgv.html" class="text-light text-decoration-none mb-2 d-block">CGV</a></li>
+                        <li><a href="politique-confidentialite.html" class="text-light text-decoration-none mb-2 d-block">Politique de confidentialité</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p class="mb-0">&copy; 2024 Boutikoo. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Animation du menu burger
+        document.querySelector('.navbar-toggler').addEventListener('click', function() {
+            this.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Boutikoo</title>
+    <link rel="icon" type="image/jpeg" href="images/4x/Fichier 6@4x-100.jpg">
+    <link rel="apple-touch-icon" href="images/4x/Fichier 6@4x-100.jpg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+    :root {
+        --primary-color: #039BE5;
+        --primary-color-dark: #0288d1;
+        --primary-color-light: rgba(3,155,229,0.1);
+    }
+
+    /* Styles pour la navbar */
+    .navbar {
+        padding: 1.2rem 0;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        background-color: white !important;
+    }
+    
+    .navbar-brand {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--primary-color) !important;
+        letter-spacing: -0.5px;
+    }
+    
+    /* Nouveau style pour le menu burger */
+    .navbar-toggler {
+        border: none;
+        padding: 0;
+        width: 40px;
+        height: 40px;
+        position: relative;
+        border-radius: 50%;
+        background: var(--primary-color-light);
+        transition: all 0.3s ease;
+    }
+    
+    .navbar-toggler:hover {
+        background: rgba(3,155,229,0.15);
+    }
+    
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+    
+    .burger-icon {
+        position: relative;
+        width: 20px;
+        height: 14px;
+        margin: 13px auto;
+    }
+    
+    .burger-icon span {
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: var(--primary-color);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+        left: 0;
+    }
+    
+    .burger-icon span:nth-child(1) { top: 0; }
+    .burger-icon span:nth-child(2) { top: 6px; }
+    .burger-icon span:nth-child(3) { top: 12px; }
+    
+    .navbar-toggler[aria-expanded="true"] .burger-icon span:nth-child(1) {
+        transform: rotate(45deg) translate(4px, 4px);
+    }
+    
+    .navbar-toggler[aria-expanded="true"] .burger-icon span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .navbar-toggler[aria-expanded="true"] .burger-icon span:nth-child(3) {
+        transform: rotate(-45deg) translate(4px, -4px);
+    }
+    
+    .nav-link {
+        color: #333 !important;
+        font-weight: 500;
+        padding: 0.8rem 1.5rem !important;
+        transition: all 0.3s ease;
+        position: relative;
+        font-size: 1.1rem;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+        color: var(--primary-color) !important;
+    }
+    
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 50%;
+        background-color: var(--primary-color);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+    
+    .nav-link:hover::after, .nav-link.active::after {
+        width: 70%;
+    }
+    
+    /* Responsive Styles pour la navbar */
+    @media (max-width: 991px) {
+        .navbar-collapse {
+            background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .nav-link {
+            padding: 1rem 1.5rem !important;
+            border-radius: 10px;
+            margin: 0.3rem 0;
+            font-size: 1.1rem;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--primary-color-light);
+            transform: translateX(5px);
+        }
+        
+        .nav-link::after {
+            display: none;
+        }
+    }
+    
+    /* Nouveau style pour le footer responsive */
+    .footer {
+        background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+        padding: 80px 0 40px;
+        margin-top: 80px;
+        border-top: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .footer h5 {
+        color: var(--primary-color);
+        font-weight: 600;
+        margin-bottom: 25px;
+        font-size: 1.3rem;
+    }
+    
+    .footer p {
+        color: #6c757d;
+        line-height: 1.8;
+        font-size: 1rem;
+    }
+    
+    .footer ul li {
+        margin-bottom: 15px;
+    }
+    
+    .footer ul li a {
+        color: #6c757d;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+        display: inline-block;
+        padding: 3px 0;
+    }
+    
+    .footer ul li a:hover {
+        color: var(--primary-color);
+        transform: translateX(5px);
+    }
+    
+    .footer .social-links {
+        margin-top: 30px;
+        display: flex;
+        gap: 20px;
+    }
+    
+    .footer .social-links a {
+        color: #6c757d;
+        font-size: 1.4rem;
+        transition: all 0.3s ease;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: var(--primary-color-light);
+    }
+    
+    .footer .social-links a:hover {
+        color: var(--primary-color);
+        transform: translateY(-3px);
+        background: var(--primary-color-light);
+    }
+    
+    .footer hr {
+        margin: 40px 0;
+        background-color: rgba(0,0,0,0.05);
+        height: 1px;
+    }
+    
+    .footer .copyright {
+        color: #6c757d;
+        font-size: 0.95rem;
+    }
+    
+    /* Footer Responsive */
+    @media (max-width: 768px) {
+        .footer {
+            padding: 60px 0 30px;
+            text-align: left;
+        }
+        
+        .footer .col-md-4 {
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+        
+        .footer h5 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .footer .social-links {
+            justify-content: flex-start;
+            margin-top: 25px;
+        }
+        
+        .footer ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer ul li a {
+            font-size: 0.95rem;
+        }
+    }
+
+    /* Style des cartes de contact */
+    .price-highlight-card {
+        background: linear-gradient(120deg, #e3f2fd 0%, #ffffff 100%);
+        border: 3px solid #039BE5;
+        border-radius: 2rem;
+        padding: 2rem;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 8px 32px rgba(3,155,229,0.10), 0 1.5px 4px rgba(0,0,0,0.07);
+        transition: all 0.3s ease;
+        color: #333;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .price-highlight-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 48px rgba(3,155,229,0.15), 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .badge-price {
+        background: #039BE5;
+        color: white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.2rem;
+        display: inline-block;
+        margin-bottom: 1rem;
+    }
+
+    .badge-price-center {
+        position: relative;
+        top: 0;
+        transform: translateY(0);
+    }
+
+    .price-card-title {
+        color: #333;
+        font-size: 1.6rem;
+        margin-bottom: 0.8rem;
+        font-weight: 600;
+    }
+
+    .price-card-text {
+        color: #666;
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Style commun pour tous les boutons */
+    .btn {
+        padding: 0.8rem 1.8rem;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+        font-size: 0.95rem;
+    }
+
+    .btn-lg {
+        padding: 1rem 2.2rem;
+        font-size: 1.1rem;
+    }
+
+    .btn-primary, .calendar-btn {
+        background: var(--primary-color) !important;
+        border-color: var(--primary-color);
+        color: white !important;
+        box-shadow: 0 4px 15px rgba(3,155,229,0.2);
+    }
+
+    .btn-primary:hover, 
+    .btn-primary:focus,
+    .btn-primary:active,
+    .calendar-btn:hover,
+    .calendar-btn:focus,
+    .calendar-btn:active {
+        background: var(--primary-color-dark) !important;
+        border-color: var(--primary-color-dark) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(3,155,229,0.3) !important;
+    }
+
+    .btn-outline-primary {
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
+        background: transparent;
+    }
+
+    .btn-outline-primary:hover,
+    .btn-outline-primary:focus,
+    .btn-outline-primary:active {
+        background: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+        color: white !important;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(3,155,229,0.3) !important;
+    }
+
+    /* Style spécifique pour le bouton calendar */
+    .calendar-btn {
+        padding: 0.8rem 1.8rem;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+        font-size: 0.95rem;
+        background: var(--primary-color) !important;
+        color: white !important;
+        box-shadow: 0 4px 15px rgba(3,155,229,0.2);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .calendar-btn:hover,
+    .calendar-btn:focus,
+    .calendar-btn:active {
+        background: var(--primary-color-dark) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(3,155,229,0.3) !important;
+    }
+
+    /* Ajustement pour les cartes et boutons sur mobile */
+    @media (max-width: 768px) {
+        .price-highlight-card {
+            padding: 1.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .price-card-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .price-card-text {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .badge-price {
+            font-size: 0.85rem;
+            padding: 0.4rem 1rem;
+        }
+
+        .contact-section {
+            padding-top: 2rem;
+        }
+
+        .col-md-6 {
+            padding: 0 1rem;
+        }
+
+        .row.justify-content-center.g-4 {
+            margin: 0;
+        }
+        .btn, .calendar-btn {
+            padding: 0.7rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .btn-lg {
+            padding: 0.8rem 1.8rem;
+            font-size: 1rem;
+        }
+    }
+    </style>
+</head>
+<body>
+    <!-- Navigation avec nouveau burger menu -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Boutikoo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <div class="burger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tarifs.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="creations.html">Créations</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header" style="padding-top: 120px; padding-bottom: 0;">
+        <div class="container">
+            <h1 class="display-4 text-center mb-1">Contact</h1>
+            <p class="lead text-center mb-2 small">Nous sommes là pour vous accompagner dans votre projet</p>
+        </div>
+    </section>
+
+    <!-- Section de contact avec décalage négatif -->
+    <section class="contact-section py-5" style="padding-top: 5px !important;">
+        <div class="container">
+            <div class="row justify-content-center g-4">
+                <div class="col-12 col-xl-10">
+                    <div class="row justify-content-center g-4">
+                        <!-- Carte pour le rendez-vous -->
+                        <div class="col-md-6 col-lg-5">
+                            <div class="price-highlight-card h-100">
+                                <div class="text-center mb-3 mt-2">
+                                    <span class="badge-price badge-price-center">Rendez-vous gratuit</span>
+                                </div>
+                                <h3 class="price-card-title">Prendre un rendez-vous</h3>
+                                <p class="price-card-text mb-4">Planifiez une rencontre sur mesure avec notre équipe pour discuter de votre projet en détail.</p>
+                                <a href="https://calendar.app.google/Eg99QdGySmcWk4Jo8" target="_blank" class="calendar-btn btn btn-primary">
+                                    <i class="fas fa-calendar-alt me-2"></i>Prendre un RDV
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Carte pour le téléphone -->
+                        <div class="col-md-6 col-lg-5">
+                            <div class="price-highlight-card h-100">
+                                <div class="text-center mb-3 mt-2">
+                                    <span class="badge-price badge-price-center">Contact direct</span>
+                                </div>
+                                <h3 class="price-card-title">Nous joindre par téléphone</h3>
+                                <p class="price-card-text mb-4">Appelez-nous directement pour discuter de votre projet ou pour toute question liée à votre demande.</p>
+                                <a href="tel:0756821246" class="calendar-btn btn btn-primary">
+                                    <i class="fas fa-phone me-2"></i>Appeler
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Carte pour l'email -->
+                        <div class="col-md-6 col-lg-5">
+                            <div class="price-highlight-card h-100">
+                                <div class="text-center mb-3 mt-2">
+                                    <span class="badge-price badge-price-center">Contact rapide</span>
+                                </div>
+                                <h3 class="price-card-title">Nous envoyer un email</h3>
+                                <p class="price-card-text mb-4">Une question ? N'hésitez pas à nous contacter par email, nous vous répondrons dans les plus brefs délais.</p>
+                                <a href="mailto:contact@boutikoo.fr" class="calendar-btn btn btn-primary">
+                                    <i class="fas fa-envelope me-2"></i>Envoyer un email
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer amélioré -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Boutikoo</h5>
+                    <p>Votre partenaire e-commerce de confiance pour développer votre présence en ligne et augmenter vos ventes.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5>Liens rapides</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="tarifs.html">Tarifs</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Informations légales</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="mentions-legales.html">Mentions légales</a></li>
+                        <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
+                        <li><a href="cgv.html">Conditions générales de vente</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center copyright">
+                <p>&copy; 2024 Boutikoo. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
