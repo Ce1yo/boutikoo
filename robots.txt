@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://boutikoo.fr/sitemap.xml
